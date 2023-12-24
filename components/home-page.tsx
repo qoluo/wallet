@@ -19,8 +19,9 @@ import {
 } from "@/components/ui/card";
 import { ResponsiveBar } from "@nivo/bar";
 import { ResponsivePie } from "@nivo/pie";
+import { AddRecord } from "./add-record-button";
 
-export default function HomePage() {
+export default function LandingPage() {
   return (
     <div className="grid h-screen min-h-screen w-full lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-gray-100/40 lg:block dark:bg-gray-800/40">
@@ -38,28 +39,28 @@ export default function HomePage() {
             <nav className="grid items-start px-4 text-sm font-medium">
               <Link
                 className="flex items-center gap-3 rounded-lg bg-gray-100 px-3 py-2 text-gray-900  transition-all hover:text-gray-900 dark:bg-gray-800 dark:text-gray-50 dark:hover:text-gray-50"
-                href="#"
+                href="/"
               >
                 <HomeIcon className="h-4 w-4" />
                 Home
               </Link>
               <Link
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-                href="#"
+                href="expenses-page"
               >
                 <CreditCardIcon className="h-4 w-4" />
                 Expenses
               </Link>
               <Link
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-                href="#"
+                href="analytics-page"
               >
                 <LineChartIcon className="h-4 w-4" />
                 Analytics
               </Link>
               <Link
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-                href="#"
+                href="records-page"
               >
                 <ListIcon className="h-4 w-4" />
                 Records
@@ -85,9 +86,7 @@ export default function HomePage() {
               </div>
             </form>
           </div>
-          <Button className="rounded-full ml-auto" variant="outline">
-            <PlusIcon className="h-6 w-6" />
-          </Button>
+          <AddRecord />
         </header>
         <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
           <div className="grid gap-6">
