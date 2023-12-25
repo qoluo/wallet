@@ -53,7 +53,7 @@ export function LeftNavigation() {
   );
 }
 
-function HomeIcon(props) {
+function HomeIcon(props: any) {
   return (
     <svg
       {...props}
@@ -73,7 +73,7 @@ function HomeIcon(props) {
   );
 }
 
-function LineChartIcon(props) {
+function LineChartIcon(props: any) {
   return (
     <svg
       {...props}
@@ -93,7 +93,7 @@ function LineChartIcon(props) {
   );
 }
 
-function ListIcon(props) {
+function ListIcon(props: any) {
   return (
     <svg
       {...props}
@@ -117,7 +117,7 @@ function ListIcon(props) {
   );
 }
 
-function WalletIcon(props) {
+function WalletIcon(props: any) {
   return (
     <svg
       {...props}
