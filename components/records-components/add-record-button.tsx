@@ -12,7 +12,8 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { DatePicker } from "@/components/records-components/date-picker";
+import { DatePicker } from "@/components/general-components/date-picker";
+import { AccountSelector } from "@/components/general-components/account-selector";
 
 export function AddRecord() {
   return (
@@ -34,7 +35,7 @@ export function AddRecord() {
             <Label htmlFor="name" className="text-right">
               Account
             </Label>
-            <Input id="record-account" defaultValue="" className="col-span-3" />
+            <AccountSelector />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="username" className="text-right">
