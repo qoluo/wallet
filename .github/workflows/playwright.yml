@@ -1,12 +1,13 @@
 name: Playwright Tests
 on:
   issue_comment:                                     
-    types: [created]
+    types: 
+    - created
 jobs:
   playwright-test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    if: contains(github.event.comment.html_url, '/pull/')
+    if: ${{ github.event.issue.pull_request }}
     steps:
     - uses: actions/checkout@v3
     - uses: oven-sh/setup-bun@v1
