@@ -4,9 +4,9 @@ on:
     types: [created]
 jobs:
   playwright-test:
-    if: contains(github.event.comment.html_url, '/pull/')
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    if: contains(github.event.comment.html_url, '/pull/')
     steps:
     - uses: actions/checkout@v3
     - uses: oven-sh/setup-bun@v1
