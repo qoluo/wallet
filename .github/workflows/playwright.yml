@@ -7,7 +7,7 @@ jobs:
   playwright-test:
   runs-on: ubuntu-latest
   timeout-minutes: 60
-  if: ${{ github.event.issue.pull_request }}
+    if: ${{ github.event.issue.pull_request }}
   steps:
   - uses: actions/checkout@v3
   - uses: oven-sh/setup-bun@v1
