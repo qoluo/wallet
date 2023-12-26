@@ -13,12 +13,14 @@ jobs:
     - uses: oven-sh/setup-bun@v1
       with:
         bun-version: 1.0.19
-    if: contains(github.event.comment.body, '/playwright')
     - name: Install dependencies
+      if: contains(github.event.comment.body, '/playwright')
       run: bun install
     - name: Install Playwright Browsers
+      if: contains(github.event.comment.body, '/playwright')
       run: bunx playwright install --with-deps
     - name: Run Playwright tests
+      if: contains(github.event.comment.body, '/playwright')
       run: bunx playwright test
     - uses: actions/upload-artifact@v3
       if: always()
