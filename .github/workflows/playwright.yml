@@ -1,30 +1,25 @@
 name: Playwright Tests
 on:
-  issue_comment:
-    types:
-      - created
+  pull_request:
+    branches: [main, master]
 jobs:
-  playwright-tests-runner:
-    runs-on: ubuntu-latest
+  playwright-test:
     timeout-minutes: 60
-    if: ${{ github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: 1.0.19
-      - name: Install dependencies
-        if: contains(github.event.comment.body, '/playwright')
-        run: bun install
-      - name: Install Playwright Browsers
-        if: contains(github.event.comment.body, '/playwright')
-        run: bunx playwright install --with-deps
-      - name: Run Playwright tests
-        if: contains(github.event.comment.body, '/playwright')
-        run: bunx playwright test
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 1
+    - uses: actions/checkout@v3
+    - uses: oven-sh/setup-bun@v1
+      with:
+        bun-version: 1.0.19
+    - name: Install dependencies
+      run: bun install
+    - name: Install Playwright Browsers
+      run: bunx playwright install --with-deps
+    - name: Run Playwright tests
+      run: bunx playwright test
+    - uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 1
