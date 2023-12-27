@@ -238,7 +238,7 @@ export function RecordsTable() {
   });
 
   return (
-    <div className="w-full">
+    <div className="w-full" id="records-table">
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter records..."
