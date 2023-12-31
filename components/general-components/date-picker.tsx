@@ -13,7 +13,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-export function DatePicker() {
+export function DatePicker(field: any) {
   const [date, setDate] = React.useState<Date>();
 
   return (
@@ -23,18 +23,18 @@ export function DatePicker() {
           variant={"outline"}
           className={cn(
             "w-[180px] justify-start text-left font-normal",
-            !date && "text-muted-foreground"
+            !field.value && "text-muted-foreground"
           )}
         >
           <CalendarIcon className="mr-1 h-4 w-4" />
-          {date ? format(date, "PPP") : <span>Pick a date</span>}
+          {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
         <Calendar
           mode="single"
-          selected={date}
-          onSelect={setDate}
+          selected={field.value}
+          onSelect={field.onChange}
           initialFocus
         />
       </PopoverContent>
