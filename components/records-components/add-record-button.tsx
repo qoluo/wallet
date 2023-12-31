@@ -36,9 +36,12 @@ const formSchema = z.object({
   account: z.string().min(1, {
     message: "Please select an account.",
   }),
-  amount: z.string().transform(parseFloat).refine(value => value > 0, {
-    message: "Please enter amount higher than 0.",
-  }),
+  amount: z
+    .string()
+    .transform(parseFloat)
+    .refine((value) => value > 0, {
+      message: "Please enter amount higher than 0.",
+    }),
   currency: z.string().min(1, {
     message: "Please select a currency.",
   }),
@@ -104,7 +107,7 @@ export function AddRecord() {
                     <div className="grid grid-cols-4 items-center gap-3">
                       <FormLabel className="text-right">Account</FormLabel>
                       <FormControl>
-                        <AccountSelector />
+                        <AccountSelector {...field} />
                       </FormControl>
                     </div>
                     <FormMessage />
@@ -139,7 +142,7 @@ export function AddRecord() {
                     <div className="grid grid-cols-4 items-center gap-3">
                       <FormLabel className="text-right">Currency</FormLabel>
                       <FormControl>
-                        <CurrencySelector />
+                        <CurrencySelector {...field} />
                       </FormControl>
                     </div>
                     <FormMessage />
@@ -154,7 +157,7 @@ export function AddRecord() {
                     <div className="grid grid-cols-4 items-center gap-3">
                       <FormLabel className="text-right">Date</FormLabel>
                       <FormControl>
-                        <DatePicker />
+                        <DatePicker {...field} />
                       </FormControl>
                     </div>
                     <FormMessage />
