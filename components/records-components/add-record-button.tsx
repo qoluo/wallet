@@ -20,7 +20,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { DatePicker } from "@/components/general-components/date-picker";
 import { AccountSelector } from "@/components/general-components/account-selector";
 import { RecordTypeSelector } from "@/components/general-components/record-type-selector";
