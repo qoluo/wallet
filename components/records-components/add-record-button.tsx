@@ -14,6 +14,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { DatePicker } from "@/components/general-components/date-picker";
 import { AccountSelector } from "@/components/general-components/account-selector";
+import { RecordTypeSelector } from "@/components/general-components/record-type-selector";
+import { CurrencySelector } from "@/components/general-components/currency-selector";
 
 export function AddRecord() {
   return (
@@ -31,6 +33,12 @@ export function AddRecord() {
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
+          <div className="grid grid-cols-4 items-center gap-3">
+            <Label htmlFor="name" className="text-right">
+              Record Type
+            </Label>
+            <RecordTypeSelector />
+          </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-right">
               Account
@@ -42,6 +50,12 @@ export function AddRecord() {
               Amount
             </Label>
             <Input id="record-amount" defaultValue="0" className="col-span-3" />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-3">
+            <Label htmlFor="name" className="text-right">
+              Currency
+            </Label>
+            <CurrencySelector />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="username" className="text-right">
