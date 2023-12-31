@@ -51,7 +51,6 @@ const formSchema = z.object({
 function onSubmit(values: z.infer<typeof formSchema>) {
   // Do something with the form values.
   // ✅ This will be type-safe and validated.
-  console.log(12312312);
   console.log(values);
 }
 
@@ -61,7 +60,6 @@ export function AddRecord() {
     defaultValues: {
       recordType: "",
       account: "",
-      amount: 0,
       currency: "",
       date: new Date(),
     },
@@ -124,7 +122,6 @@ export function AddRecord() {
                       <FormControl>
                         <Input
                           id="record-amount"
-                          defaultValue="0"
                           className="col-span-2"
                           {...field}
                         />
