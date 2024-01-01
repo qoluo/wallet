@@ -10,9 +10,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export function AccountSelector() {
+export function AccountSelector(field: any) {
   return (
-    <Select>
+    <Select onValueChange={field.onChange} defaultValue={field.value}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Select account" />
       </SelectTrigger>
