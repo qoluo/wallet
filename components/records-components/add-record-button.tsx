@@ -81,6 +81,11 @@ export function AddRecord() {
       });
 
       if (!response.ok) {
+        toast({
+          variant: "destructive",
+          title: "Failed!",
+          description: `Failed to add new record. Please try again.`,
+        });
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
@@ -92,19 +97,13 @@ export function AddRecord() {
           currency: "",
           date: new Date(),
         });
-        
+
         // close the dialog after successful api call
         setOpen(false);
 
         toast({
-          title: "You submitted the following values:",
-          description: (
-            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-              <code className="text-white">
-                {JSON.stringify(requestBody, null, 2)}
-              </code>
-            </pre>
-          ),
+          title: "Success!",
+          description: `New record has been added.`,
         });
       }
     } catch (error) {
