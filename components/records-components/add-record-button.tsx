@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -27,31 +25,10 @@ import { CurrencySelector } from "@/components/general-components/currency-selec
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
-const formSchema = z.object({
-  recordType: z.string().min(1, {
-    message: "Please select a record type.",
-  }),
-  account: z.string().min(1, {
-    message: "Please select an account.",
-  }),
-  amount: z
-    .string()
-    .transform(parseFloat)
-    .refine((value) => value > 0, {
-      message: "Please enter amount higher than 0.",
-    }),
-  currency: z.string().min(1, {
-    message: "Please select a currency.",
-  }),
-  date: z.date(),
-});
-
-function onSubmit(values: z.infer<typeof formSchema>) {
-  // Do something with the form values.
-  // ✅ This will be type-safe and validated.
-  console.log(values);
-}
+import {
+  formSchemaForRecords as formSchema,
+  onSubmitForRecords as onSubmit,
+} from "@/utils/add-record-schema-and-api-call";
 
 export function AddRecord() {
   const form = useForm<z.infer<typeof formSchema>>({
