@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -22,15 +23,36 @@ import { DatePicker } from "@/components/general-components/date-picker";
 import { AccountSelector } from "@/components/general-components/account-selector";
 import { RecordTypeSelector } from "@/components/general-components/record-type-selector";
 import { CurrencySelector } from "@/components/general-components/currency-selector";
-import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import {
-  formSchemaForRecords as formSchema,
-  onSubmitForRecords as onSubmit,
-} from "@/utils/add-record-schema-and-api-call";
+import { useToast } from "@/components/ui/use-toast";
+import * as z from "zod";
+import { useState } from "react";
+
+export const formSchema = z.object({
+  recordType: z.string().min(1, {
+    message: "Please select a record type.",
+  }),
+  account: z.string().min(1, {
+    message: "Please select an account.",
+  }),
+  amount: z
+    .string()
+    .transform(parseFloat)
+    .refine((value) => value > 0, {
+      message: "Please enter amount higher than 0.",
+    }),
+  currency: z.string().min(1, {
+    message: "Please select a currency.",
+  }),
+  date: z.date(),
+});
 
 export function AddRecord() {
+  const { toast } = useToast();
+
+  const [open, setOpen] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,9 +63,58 @@ export function AddRecord() {
     },
   });
 
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const requestBody = {
+      type: values["recordType"],
+      account: values["account"],
+      amount: values["amount"],
+      currency: values["currency"],
+      date: values["date"],
+    };
+    try {
+      const response = await fetch(`/api/internal-api-handler-add-record`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      if (response.ok) {
+        form.reset({
+          recordType: "Select record TYPE",
+          account: "",
+          amount: 0,
+          currency: "",
+          date: new Date(),
+        });
+        
+        // close the dialog after successful api call
+        setOpen(false);
+
+        toast({
+          title: "You submitted the following values:",
+          description: (
+            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+              <code className="text-white">
+                {JSON.stringify(requestBody, null, 2)}
+              </code>
+            </pre>
+          ),
+        });
+      }
+    } catch (error) {
+      console.error("There was an error!", error);
+    }
+  }
+
   return (
     <Form {...form}>
-      <Dialog>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button className="rounded-full ml-auto" variant="outline">
             Add Record
