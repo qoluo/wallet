@@ -19,8 +19,8 @@ export function RecordTypeSelector(field: any) {
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Record Types</SelectLabel>
-          <SelectItem value="Income">Income</SelectItem>
-          <SelectItem value="Expense">Expense</SelectItem>
+          <SelectItem value="Income" id="record-type-selector-income-option">Income</SelectItem>
+          <SelectItem value="Expense" id="record-type-selector-expense-option">Expense</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

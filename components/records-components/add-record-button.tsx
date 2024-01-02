@@ -89,7 +89,7 @@ export function AddRecord() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      if (response.ok) {
+      if (response.ok && response.status === 201) {
         form.reset({
           recordType: "Select record TYPE",
           account: "",
@@ -121,7 +121,7 @@ export function AddRecord() {
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Add Record</DialogTitle>
+            <DialogTitle>Add New Record</DialogTitle>
             <DialogDescription>
               Add expense, income or transfer money from one account to another.
             </DialogDescription>
