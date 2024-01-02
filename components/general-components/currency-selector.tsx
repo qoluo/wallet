@@ -19,8 +19,10 @@ export function CurrencySelector(field: any) {
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Currencies</SelectLabel>
-          <SelectItem value="TEST1">TEST1</SelectItem>
-          <SelectItem value="TEST2">TEST2</SelectItem>
+          <SelectItem value="TEST1" id="currency-selector-TEST1-option">
+            TEST1
+          </SelectItem>
+          <SelectItem value="TEST2" id="currency-selector-TEST2-option">TEST2</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

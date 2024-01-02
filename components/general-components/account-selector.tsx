@@ -19,11 +19,21 @@ export function AccountSelector(field: any) {
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Accounts</SelectLabel>
-          <SelectItem value="General">General</SelectItem>
-          <SelectItem value="Debit 1">Debit 1</SelectItem>
-          <SelectItem value="Debit 2">Debit 2</SelectItem>
-          <SelectItem value="Credit 1">Credit 1</SelectItem>
-          <SelectItem value="Credeit 2">Credit 2</SelectItem>
+          <SelectItem value="General" id="account-selector-general-option">
+            General
+          </SelectItem>
+          <SelectItem value="Debit 1" id="account-selector-debit-1-option">
+            Debit 1
+          </SelectItem>
+          <SelectItem value="Debit 2" id="account-selector-debit-2-option">
+            Debit 2
+          </SelectItem>
+          <SelectItem value="Credit 1" id="account-selector-credit-1-option">
+            Credit 1
+          </SelectItem>
+          <SelectItem value="Credeit 2" id="account-selector-credit-1-option">
+            Credit 2
+          </SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
