@@ -89,7 +89,7 @@ export function AddRecord() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      if (response.ok) {
+      if (response.ok && response.status === 201) {
         form.reset({
           recordType: "Select record TYPE",
           account: "",
