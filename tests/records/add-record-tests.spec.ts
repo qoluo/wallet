@@ -1,11 +1,15 @@
 import { test, expect } from "@playwright/test";
+import { time } from "console";
 
 test("can add a new record", async ({ page }) => {
-  await page.route("/api/internal-api-handler-add-record", async (route) => {
-    route.fulfill({
-      status: 201,
-    });
-  });
+  await page.route(
+    "http://localhost:3000/api/internal-api-handler-add-record",
+    async (route) => {
+      route.fulfill({
+        status: 201,
+      });
+    }
+  );
 
   await page.goto("http://localhost:3000/records");
 
@@ -29,6 +33,37 @@ test("can add a new record", async ({ page }) => {
 
   expect(await page.isVisible('text="Success!"')).toBe(true);
   expect(await page.isVisible('text="New record has been added."')).toBe(true);
+});
+
+test("new record can not be added if external api is down", async ({
+  page,
+}) => {
+  await page.goto("http://localhost:3000/records");
+
+  await page.click('text="Add Record"');
+
+  await page.click('text="Select record type"');
+  await page.locator("#record-type-selector-income-option").click();
+
+  await page.click('text="Select account"');
+  await page.locator("#account-selector-general-option").click();
+
+  await page.fill("#record-amount", "220");
+
+  await page.click('text="Select currency"');
+  await page.locator("#currency-selector-TEST1-option").click();
+
+  await page.click('text="Save changes"');
+
+  await page.waitForSelector('text="Failed!"');
+  await page.waitForSelector(
+    'text="Failed to add new record. Please try again."'
+  );
+
+  expect(await page.isVisible('text="Failed!"')).toBe(true);
+  expect(
+    await page.isVisible('text="Failed to add new record. Please try again."')
+  ).toBe(true);
 });
 
 test("empty record-type field should return error from zod", async ({
@@ -123,14 +158,17 @@ test("amount field with negative value should return error from zod", async ({
   ).toBe(true);
 });
 
-test("amount field with float value higher than 0 should return error from zod", async ({
+test("amount field with float value higher than 0 create a record", async ({
   page,
 }) => {
-  await page.route("/api/internal-api-handler-add-record", async (route) => {
-    route.fulfill({
-      status: 201,
-    });
-  });
+  await page.route(
+    "http://localhost:3000/api/internal-api-handler-add-record",
+    async (route) => {
+      route.fulfill({
+        status: 201,
+      });
+    }
+  );
 
   await page.goto("http://localhost:3000/records");
 
