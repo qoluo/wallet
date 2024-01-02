@@ -1,6 +1,12 @@
 import { test, expect } from "@playwright/test";
 
 test("can add a new record", async ({ page }) => {
+  await page.route("/api/internal-api-handler-add-record", async (route) => {
+    route.fulfill({
+      status: 201,
+    });
+  });
+
   await page.goto("http://localhost:3000/records");
 
   await page.click('text="Add Record"');
@@ -20,13 +26,9 @@ test("can add a new record", async ({ page }) => {
   await page.click('text="Save changes"');
 
   // Wait for the success toast to appear
-  await page.waitForSelector('text="Failed!"');
-  await page.waitForSelector(
-    'text="Failed to add new record. Please try again."'
-  );
+  await page.waitForSelector('text="Success!"');
+  await page.waitForSelector('text="New record has been added."');
 
-  expect(await page.isVisible('text="Failed!"')).toBe(true);
-  expect(
-    await page.isVisible('text="Failed to add new record. Please try again."')
-  ).toBe(true);
+  expect(await page.isVisible('text="Success!"')).toBe(true);
+  expect(await page.isVisible('text="New record has been added."')).toBe(true);
 });
