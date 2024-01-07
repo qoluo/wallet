@@ -19,3 +19,9 @@ test("should navigate to the Records page", async ({ page }) => {
   await expect(page).toHaveURL("/records");
   await expect(page.locator("h2")).toContainText("Records Overview");
 });
+
+test("should have theme mode toggle on the page", async ({ page }) => {
+  await page.goto("/");
+  await page.waitForSelector("#theme-mode-toggle");
+  await expect(page.locator("#theme-mode-toggle")).toBeVisible();
+});
