@@ -1,7 +1,7 @@
 "use client";
 import { AddRecord } from "@/components/records-components/add-record-button";
 import { usePathname } from "next/navigation";
-import { ThemeModeToggle } from "@/components/general-components/dark-mode-toggle";
+import { ThemeModeToggle } from "@/components/general-components/theme-mode-toggle";
 
 export function TopNavBar() {
   const selectedPage = usePathname();
