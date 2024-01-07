@@ -29,3 +29,9 @@ test("should have a records table component", async ({ page }) => {
   await page.goto("/records");
   await expect(page.locator("#records-table")).toBeVisible();
 });
+
+test("should have theme mode toggle on the page", async ({ page }) => {
+  await page.goto("/");
+  await page.waitForSelector("#theme-mode-toggle");
+  await expect(page.locator("#theme-mode-toggle")).toBeVisible();
+});
