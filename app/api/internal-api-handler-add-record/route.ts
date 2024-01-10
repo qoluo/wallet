@@ -3,6 +3,7 @@ export async function POST(Request: Request) {
   const WALLET_API_URL = process.env.QOLUO_WALLET_API;
   const WALLET_API_ADD_RECORDS_ENDPOINT =
     process.env.QOLUO_WALLET_API_ADD_RECORDS_ENDPOINT;
+
   try {
     const response = await fetch(
       `${WALLET_API_URL}/${WALLET_API_ADD_RECORDS_ENDPOINT}`,
