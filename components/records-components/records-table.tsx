@@ -1,5 +1,5 @@
-import { Payment, columns } from "@/app/records/columns";
-import { RecordsDataTable } from "@/app/records/data-table";
+import { Payment, columns } from "@/components/records-components/columns";
+import { RecordsDataTable } from "@/components/records-components/data-table";
 import { getAllRecordsfromDB } from "@/utils/records/get-all-records";
 
 async function getData(): Promise<Payment[]> {
