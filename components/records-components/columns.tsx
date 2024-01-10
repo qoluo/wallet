@@ -81,8 +81,15 @@ export const columns: ColumnDef<Payment>[] = [
   },
   {
     accessorKey: "date",
-    header: "Date",
-    cell: ({ row }) => <div className="lowercase">{row.getValue("date")}</div>,
+    header: "Record added on",
+    cell: ({ row }) => {
+      const formatedDate = new Intl.DateTimeFormat("en-US", {
+        dateStyle: "medium",
+        timeStyle: "short",
+      }).format(new Date(row.getValue("date")));
+
+      return <div>{formatedDate}</div>;
+    },
   },
   {
     id: "actions",
