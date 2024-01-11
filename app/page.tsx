@@ -4,8 +4,7 @@ import { AccountsOverview } from "@/components/home-components/accounts-overview
 
 export default function LandingPage() {
   return (
-    <div className="grid h-screen min-h-screen w-full lg:grid-cols-[280px_1fr]">
-      <LeftNavigation />
+    <div className="grid h-screen min-h-screen w-full">
       <div className="flex flex-col">
         <TopNavBar />
         <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
