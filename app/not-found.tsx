@@ -11,7 +11,7 @@ export default function Component() {
               Oops! Page not found.
             </h1>
             <p className="mt-2 text-gray-600 dark:text-gray-400">
-              We've searched high and low but couldn't find the page you're
+              We&apos;ve searched high and low but couldn&apos;t find the page you&apos;re
               looking for.
             </p>
           </CardContent>
