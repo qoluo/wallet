@@ -68,7 +68,6 @@ export const columns: ColumnDef<Payment>[] = [
         style: "currency",
         currency: row.getValue("currency"),
       }).format(amount);
-      console.log(formatted);
 
       return <div>{formatted}</div>;
     },
