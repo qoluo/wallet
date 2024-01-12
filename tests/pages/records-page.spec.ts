@@ -27,6 +27,7 @@ test("should have Add Record button", async ({ page }) => {
 
 test("should have a records table component", async ({ page }) => {
   await page.goto("/records");
+  await page.waitForSelector("#records-table");
   await expect(page.locator("#records-table")).toBeVisible();
 });
 
