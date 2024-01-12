@@ -19,10 +19,12 @@ export function CurrencySelector(field: any) {
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Currencies</SelectLabel>
-          <SelectItem value="TEST1" id="currency-selector-TEST1-option">
-            TEST1
+          <SelectItem value="USD" id="currency-selector-USD-option">
+            USD
           </SelectItem>
-          <SelectItem value="TEST2" id="currency-selector-TEST2-option">TEST2</SelectItem>
+          <SelectItem value="EUR" id="currency-selector-EUR-option">
+            EUR
+          </SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
