@@ -1,4 +1,3 @@
-import { LeftNavigation } from "@/components/general-components/left-navigation";
 import { RecordsTable } from "@/components/records-components/records-table";
 import { TopNavBar } from "@/components/general-components/top-nav-bar";
 
