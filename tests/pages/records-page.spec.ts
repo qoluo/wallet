@@ -35,7 +35,7 @@ test("should have a records table component", async ({ page }) => {
           recordType: "Expense",
           account: "Playwright e2e Mock",
           amount: "1",
-          currency: "Playwright e2e Mock",
+          currency: "USD",
           date: "2024-01-10T22:53:33.374Z",
         },
         {
@@ -43,7 +43,7 @@ test("should have a records table component", async ({ page }) => {
           recordType: "Income",
           account: "Playwright e2e Mock",
           amount: "220",
-          currency: "Playwright e2e Mock",
+          currency: "EUR",
           date: "2024-01-10T22:53:33.374Z",
         },
       ];
@@ -63,7 +63,7 @@ test("should have a records table component", async ({ page }) => {
           recordType: "Expense",
           account: "Playwright e2e Mock",
           amount: "1",
-          currency: "Playwright e2e Mock",
+          currency: "EUR",
           date: "2024-01-10T22:53:33.374Z",
         },
         {
@@ -71,7 +71,7 @@ test("should have a records table component", async ({ page }) => {
           recordType: "Income",
           account: "Playwright e2e Mock",
           amount: "220",
-          currency: "Playwright e2e Mock",
+          currency: "USD",
           date: "2024-01-10T22:53:33.374Z",
         },
       ];

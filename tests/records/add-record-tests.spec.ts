@@ -33,7 +33,7 @@ test("can add a new record", async ({ page }) => {
   await page.fill("#record-amount", "220");
 
   await page.click('text="Select currency"');
-  await page.locator("#currency-selector-TEST1-option").click();
+  await page.locator("#currency-selector-EUR-option").click();
 
   await page.click('text="Save changes"');
 
@@ -60,7 +60,7 @@ test("new record can not be added if external api is down", async ({
   await page.fill("#record-amount", "220");
 
   await page.click('text="Select currency"');
-  await page.locator("#currency-selector-TEST1-option").click();
+  await page.locator("#currency-selector-USD-option").click();
 
   await page.click('text="Save changes"');
 
@@ -88,7 +88,7 @@ test("empty record-type field should return error from zod", async ({
   await page.fill("#record-amount", "220");
 
   await page.click('text="Select currency"');
-  await page.locator("#currency-selector-TEST1-option").click();
+  await page.locator("#currency-selector-EUR-option").click();
 
   await page.click('text="Save changes"');
 
@@ -110,7 +110,7 @@ test("empty account field should return error from zod", async ({ page }) => {
   await page.fill("#record-amount", "220");
 
   await page.click('text="Select currency"');
-  await page.locator("#currency-selector-TEST1-option").click();
+  await page.locator("#currency-selector-USD-option").click();
 
   await page.click('text="Save changes"');
 
@@ -131,7 +131,7 @@ test("empty amount field should return error from zod", async ({ page }) => {
   await page.locator("#account-selector-general-option").click();
 
   await page.click('text="Select currency"');
-  await page.locator("#currency-selector-TEST1-option").click();
+  await page.locator("#currency-selector-EUR-option").click();
 
   await page.click('text="Save changes"');
 
@@ -156,7 +156,7 @@ test("amount field with negative value should return error from zod", async ({
   await page.fill("#record-amount", "-1");
 
   await page.click('text="Select currency"');
-  await page.locator("#currency-selector-TEST1-option").click();
+  await page.locator("#currency-selector-USD-option").click();
 
   await page.click('text="Save changes"');
 
@@ -192,7 +192,7 @@ test("amount field with float value higher than 0 create a record", async ({
   await page.fill("#record-amount", "0.1");
 
   await page.click('text="Select currency"');
-  await page.locator("#currency-selector-TEST1-option").click();
+  await page.locator("#currency-selector-EUR-option").click();
 
   await page.click('text="Save changes"');
 
