@@ -1,24 +1,11 @@
 import { test, expect } from "@playwright/test";
-import { time } from "console";
 
 test("can add a new record", async ({ page }) => {
-  await page.route(
-    "http://localhost:3000/api/internal-api-handler-add-record",
-    async (route) => {
-      route.fulfill({
-        status: 201,
-      });
-    }
-  );
-
-  await page.route(
-    "http://127.0.0.1:3000/api/internal-api-handler-add-record",
-    async (route) => {
-      route.fulfill({
-        status: 201,
-      });
-    }
-  );
+  await page.route("/api/internal-api-handler-add-record", async (route) => {
+    route.fulfill({
+      status: 201,
+    });
+  });
 
   await page.goto("http://localhost:3000/records");
 

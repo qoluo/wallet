@@ -27,7 +27,7 @@ test("should have Add Record button", async ({ page }) => {
 
 test("should have a records table component", async ({ page }) => {
   await page.route(
-    "http://127.0.0.1:3000/api/internal-api-handler-get-all-records",
+    "/api/internal-api-handler-get-all-records",
     async (route) => {
       const dataToReturn = [
         {
@@ -44,34 +44,6 @@ test("should have a records table component", async ({ page }) => {
           account: "Playwright e2e Mock",
           amount: "220",
           currency: "EUR",
-          date: "2024-01-10T22:53:33.374Z",
-        },
-      ];
-      route.fulfill({
-        status: 200,
-        json: dataToReturn,
-      });
-    }
-  );
-
-  await page.route(
-    "http://localhost:3000/api/internal-api-handler-get-all-records",
-    async (route) => {
-      const dataToReturn = [
-        {
-          id: "1",
-          recordType: "Expense",
-          account: "Playwright e2e Mock",
-          amount: "1",
-          currency: "EUR",
-          date: "2024-01-10T22:53:33.374Z",
-        },
-        {
-          id: "2",
-          recordType: "Income",
-          account: "Playwright e2e Mock",
-          amount: "220",
-          currency: "USD",
           date: "2024-01-10T22:53:33.374Z",
         },
       ];
