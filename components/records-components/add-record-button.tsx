@@ -12,7 +12,6 @@ import {
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -28,6 +27,7 @@ import { useForm } from "react-hook-form";
 import { useToast } from "@/components/ui/use-toast";
 import * as z from "zod";
 import { useState } from "react";
+import { mutate } from "swr";
 
 export const formSchema = z.object({
   recordType: z.string().min(1, {
@@ -100,6 +100,9 @@ export function AddRecord() {
 
         // close the dialog after successful api call
         setOpen(false);
+
+        // refresh the table after successful addition of new record
+        mutate("/api/internal-api-handler-get-all-records");
 
         toast({
           title: "Success!",

@@ -1,16 +1,16 @@
 export async function POST(Request: Request) {
-  const requestBody = await Request.text();
   const WALLET_API_URL = process.env.QOLUO_WALLET_API;
-  const WALLET_API_ADD_RECORDS_ENDPOINT =
-    process.env.QOLUO_WALLET_API_ADD_RECORDS_ENDPOINT;
+  const QOLUO_WALLET_API_GET_ALL_RECORDS_ENDPOINT =
+    process.env.QOLUO_WALLET_API_GET_ALL_RECORDS_ENDPOINT;
 
   try {
     const response = await fetch(
-      `${WALLET_API_URL}/${WALLET_API_ADD_RECORDS_ENDPOINT}`,
+      `${WALLET_API_URL}/${QOLUO_WALLET_API_GET_ALL_RECORDS_ENDPOINT}`,
       {
         method: "POST",
-        headers: Request.headers,
-        body: requestBody,
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
     );
 
@@ -18,9 +18,7 @@ export async function POST(Request: Request) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    // const data = await response.json();
-
-    return new Response(null, { status: 201 });
+    return response;
   } catch (error) {
     console.error("There was an error!", error);
   }

@@ -7,12 +7,12 @@ export default function Component() {
       <div className="container grid gap-4 px-4 md:px-6 text-center">
         <Card className="w-full max-w-md mx-auto bg-white shadow-md rounded-lg overflow-hidden">
           <CardContent className="p-4">
-            <h1 className="text-3xl font-bold tracking-tighter mt-6">
+            <h1 className="text-3xl font-bold tracking-tighter mt-6 text-black">
               Oops! Page not found.
             </h1>
             <p className="mt-2 text-gray-600 dark:text-gray-400">
-              We've searched high and low but couldn't find the page you're
-              looking for.
+              We&apos;ve searched high and low but couldn&apos;t find the page
+              you&apos;re looking for.
             </p>
           </CardContent>
           <CardHeader className="p-4 border-t border-gray-200">

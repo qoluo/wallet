@@ -1,0 +1,11 @@
+export async function getAllRecordsfromDB(endpoint: string) {
+  const res = await fetch(endpoint, {
+    method: "POST",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data from internal API handler.");
+  }
+
+  return res.json();
+}
