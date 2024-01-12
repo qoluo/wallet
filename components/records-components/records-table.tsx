@@ -5,19 +5,26 @@ import { columns } from "@/components/records-components/columns";
 import { RecordsDataTable } from "@/components/records-components/data-table";
 import { getAllRecordsfromDB } from "@/utils/records/get-all-records";
 import { Progress } from "@/components/ui/progress";
+import { useEffect, useState } from "react";
 
 export function RecordsTable() {
+  const [randomProgressBarNumber, setRandom] = useState(0);
+
   const { data, error, isLoading } = useSWR(
     "/api/internal-api-handler-get-all-records",
     getAllRecordsfromDB
   );
+
+  useEffect(() => {
+    setRandom(Math.floor(Math.random() * 100));
+  }, []);
 
   if (error) return <div>Error loading data</div>;
   if (isLoading)
     return (
       <div className="flex items-center justify-center h-screen">
         <div className="w-1/3 mx-auto p-3 shadow mt-[-20%]">
-          <Progress value={Math.floor(Math.random() * 100)} />
+          <Progress value={randomProgressBarNumber} />
         </div>
       </div>
     );
