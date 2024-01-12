@@ -66,8 +66,9 @@ export const columns: ColumnDef<Payment>[] = [
       // Format the amount as a dollar amount
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
-        currency: "USD",
+        currency: row.getValue("currency"),
       }).format(amount);
+      console.log(formatted);
 
       return <div>{formatted}</div>;
     },
