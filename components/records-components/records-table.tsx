@@ -7,13 +7,13 @@ import { getAllRecordsfromDB } from "@/utils/records/get-all-records";
 import { Progress } from "@/components/ui/progress";
 
 export function RecordsTable() {
-  const { data, error } = useSWR(
+  const { data, error, isLoading } = useSWR(
     "/api/internal-api-handler-get-all-records",
     getAllRecordsfromDB
   );
 
   if (error) return <div>Error loading data</div>;
-  if (!data)
+  if (isLoading)
     return (
       <div className="flex items-center justify-center h-screen">
         <div className="w-1/3 mx-auto p-3 shadow mt-[-20%]">
