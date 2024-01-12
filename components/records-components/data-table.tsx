@@ -34,6 +34,13 @@ export function RecordsDataTable<TData, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    enableHiding: true,
+    initialState: {
+      columnVisibility: {
+        type: false,
+        currency: false,
+      },
+    },
   });
 
   return (
