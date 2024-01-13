@@ -33,6 +33,7 @@ jobs:
         name: all-blob-reports
         path: blob-report
         retention-days: 1
+        
   merge-reports:
     if: always()
     needs: [playwright-tests]
