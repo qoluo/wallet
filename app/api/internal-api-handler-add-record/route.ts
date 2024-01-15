@@ -19,7 +19,7 @@ export async function POST(Request: Request) {
     if (!request.ok) {
       throw new Error(`HTTP error! status: ${request.status}`);
     }
-    console.log(NextResponse.json({}, { status: 201 }));
+
     return NextResponse.json({}, { status: 201 });
   } catch (error) {
     console.error("There was an error!", error);
