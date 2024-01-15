@@ -1,6 +1,6 @@
 export async function getAllRecordsfromDB(endpoint: string) {
   const res = await fetch(endpoint, {
-    method: "POST",
+    method: "GET",
   });
 
   if (!res.ok) {
