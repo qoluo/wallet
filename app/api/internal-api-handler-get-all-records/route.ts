@@ -17,12 +17,13 @@ export async function GET(Request: Request) {
     );
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      return NextResponse.json({}, { status: 500 });
     }
 
     const data = await response.json();
     return NextResponse.json(data);
   } catch (error) {
     console.error("There was an error!", error);
+    return NextResponse.json({}, { status: 500 });
   }
 }
