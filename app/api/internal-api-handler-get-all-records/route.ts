@@ -1,3 +1,5 @@
+import { NextResponse } from "next/server";
+
 export async function GET(Request: Request) {
   const WALLET_API_URL = process.env.QOLUO_WALLET_API;
   const QOLUO_WALLET_API_GET_ALL_RECORDS_ENDPOINT =
@@ -18,7 +20,8 @@ export async function GET(Request: Request) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    return response;
+    const data = await response.json();
+    return NextResponse.json(data);
   } catch (error) {
     console.error("There was an error!", error);
   }
