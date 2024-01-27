@@ -85,8 +85,7 @@ export const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => {
       const formatedDate = new Intl.DateTimeFormat("en-US", {
         dateStyle: "medium",
-        timeStyle: "short",
-      }).format(new Date(row.getValue("date")));
+      }).format(row.getValue("date"));
 
       return <div>{formatedDate}</div>;
     },
