@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gen-sql": "drizzle-kit generate:pg"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.3",
