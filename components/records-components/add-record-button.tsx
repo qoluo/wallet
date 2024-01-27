@@ -72,7 +72,7 @@ export function AddRecord() {
       date: values["date"],
     };
     try {
-      const response = await fetch(`/api/internal-api-handler-add-record`, {
+      const response = await fetch(`/api/records/add-one`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
