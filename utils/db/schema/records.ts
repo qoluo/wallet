@@ -5,9 +5,10 @@ import {
   varchar,
   uuid,
   date,
+  bigint,
 } from "drizzle-orm/pg-core";
 
-export const records = pgTable("users", {
+export const records = pgTable("records", {
   id: serial("id").primaryKey().unique(),
   type: varchar("type", { length: 256 }),
   account: uuid("phone"),
