@@ -10,9 +10,10 @@ export async function GET(Request: Request) {
     //   throw new Error(`DB error! ${response.toString()}`);
     // }
 
-    connection.end();
+    // connection.end();
     return NextResponse.json(response);
   } catch (error) {
     console.error("There was an error!", error);
+    return NextResponse.json({}, { status: 500 });
   }
 }

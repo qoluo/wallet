@@ -20,9 +20,10 @@ export async function POST(Request: Request) {
       throw new Error(`DB error! ${response.toString()}`);
     }
 
-    connection.end();
+    // connection.end();
     return NextResponse.json({}, { status: 201 });
   } catch (error) {
     console.error("There was an error!", error);
+    return NextResponse.json({}, { status: 500 });
   }
 }
