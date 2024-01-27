@@ -1,12 +1,4 @@
-import {
-  pgTable,
-  serial,
-  numeric,
-  varchar,
-  uuid,
-  date,
-  bigint,
-} from "drizzle-orm/pg-core";
+import { pgTable, serial, numeric, varchar, date } from "drizzle-orm/pg-core";
 
 export const records = pgTable("records", {
   id: serial("id").primaryKey().unique(),
