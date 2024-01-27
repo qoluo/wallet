@@ -11,7 +11,7 @@ import {
 export const records = pgTable("records", {
   id: serial("id").primaryKey().unique(),
   type: varchar("type", { length: 256 }),
-  account: uuid("phone"),
+  account: varchar("account", { length: 256 }),
   amount: numeric("amount"),
   currency: varchar("currency", { length: 3 }),
   record_happened_at: date("happened_at"),
