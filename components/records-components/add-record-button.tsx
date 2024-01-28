@@ -102,7 +102,7 @@ export function AddRecord() {
         setOpen(false);
 
         // refresh the table after successful addition of new record
-        mutate("/api/internal-api-handler-get-all-records");
+        mutate("/api/records/get-all");
 
         toast({
           title: "Success!",
