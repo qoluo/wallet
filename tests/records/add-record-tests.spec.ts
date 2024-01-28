@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 test("can add a new record", async ({ page }) => {
-  await page.route("/api/internal-api-handler-add-record", async (route) => {
+  await page.route("/api/records/add-one", async (route) => {
     route.fulfill({
       status: 201,
     });
@@ -157,14 +157,11 @@ test("amount field with negative value should return error from zod", async ({
 test("amount field with float value higher than 0 create a record", async ({
   page,
 }) => {
-  await page.route(
-    "http://localhost:3000/api/internal-api-handler-add-record",
-    async (route) => {
-      route.fulfill({
-        status: 201,
-      });
-    }
-  );
+  await page.route("/api/records/add-one", async (route) => {
+    route.fulfill({
+      status: 201,
+    });
+  });
 
   await page.goto("http://localhost:3000/records");
 
