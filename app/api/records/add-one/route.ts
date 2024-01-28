@@ -16,9 +16,9 @@ export async function POST(Request: Request) {
     });
 
     //TODO: imrpove this error handling
-    if (response.count === undefined) {
-      throw new Error(`DB error! ${response.toString()}`);
-    }
+    // if (response.count === undefined) {
+    //   throw new Error(`DB error! ${response.toString()}`);
+    // }
 
     // connection.end();
     return NextResponse.json({}, { status: 201 });
