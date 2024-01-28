@@ -31,9 +31,12 @@ test("can add a new record", async ({ page }) => {
   expect(await page.isVisible('text="New record has been added."')).toBe(true);
 });
 
-test("new record can not be added if external api is down", async ({
-  page,
-}) => {
+test("new record can not be added if api is not working", async ({ page }) => {
+  await page.route("/api/records/add-one", async (route) => {
+    route.fulfill({
+      status: 500,
+    });
+  });
   await page.goto("http://localhost:3000/records");
 
   await page.click('text="Add Record"');
