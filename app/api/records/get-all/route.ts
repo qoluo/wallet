@@ -11,7 +11,7 @@ export async function GET(Request: Request) {
     // }
 
     // connection.end();
-    return NextResponse.json(response);
+    return NextResponse.json(response, { status: 200 });
   } catch (error) {
     console.error("There was an error!", error);
     return NextResponse.json({}, { status: 500 });
