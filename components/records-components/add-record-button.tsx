@@ -85,6 +85,7 @@ export function AddRecord() {
           variant: "destructive",
           title: "Failed!",
           description: `Failed to add new record. Please try again.`,
+          duration: 2000,
         });
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -107,6 +108,7 @@ export function AddRecord() {
         toast({
           title: "Success!",
           description: `New record has been added.`,
+          duration: 2000,
         });
       }
     } catch (error) {
