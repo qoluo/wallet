@@ -14,15 +14,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export type Payment = {
+export type Record = {
   type: string;
   account: string;
   amount: number;
   currency: string;
-  date: string;
+  record_happened_at: Date;
 };
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<Record>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -80,12 +80,14 @@ export const columns: ColumnDef<Payment>[] = [
     ),
   },
   {
-    accessorKey: "date",
+    accessorKey: "record_created_at",
     header: "Record added on",
     cell: ({ row }) => {
+      const dateValue = row.getValue("record_created_at");
+      const dateObject = new Date(dateValue as string);
       const formatedDate = new Intl.DateTimeFormat("en-US", {
         dateStyle: "medium",
-      }).format(row.getValue("date"));
+      }).format(dateObject);
 
       return <div>{formatedDate}</div>;
     },
