@@ -1,4 +1,4 @@
-export async function getAllRecordsfromDB(endpoint: string) {
+export async function fetchUtil(endpoint: string) {
   const res = await fetch(endpoint, {
     method: "GET",
   });

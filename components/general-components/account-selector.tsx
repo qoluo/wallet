@@ -31,7 +31,7 @@ export function AccountSelector(field: any) {
           <SelectItem value="Credit 1" id="account-selector-credit-1-option">
             Credit 1
           </SelectItem>
-          <SelectItem value="Credeit 2" id="account-selector-credit-1-option">
+          <SelectItem value="Credit 2" id="account-selector-credit-1-option">
             Credit 2
           </SelectItem>
         </SelectGroup>

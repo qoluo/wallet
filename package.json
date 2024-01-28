@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gen-sql": "drizzle-kit generate:pg"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.3",
@@ -24,9 +25,11 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "date-fns": "^3.0.6",
+    "drizzle-orm": "^0.29.3",
     "lucide-react": "^0.301.0",
     "next": "14.0.4",
     "next-themes": "^0.2.1",
+    "postgres": "^3.4.3",
     "react": "^18",
     "react-day-picker": "^8.10.0",
     "react-dom": "^18",
@@ -42,6 +45,8 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
+    "dotenv": "^16.4.1",
+    "drizzle-kit": "^0.20.13",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "postcss": "^8",

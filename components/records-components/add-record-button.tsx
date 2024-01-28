@@ -72,7 +72,7 @@ export function AddRecord() {
       date: values["date"],
     };
     try {
-      const response = await fetch(`/api/internal-api-handler-add-record`, {
+      const response = await fetch(`/api/records/add-one`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -85,6 +85,7 @@ export function AddRecord() {
           variant: "destructive",
           title: "Failed!",
           description: `Failed to add new record. Please try again.`,
+          duration: 2000,
         });
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -102,11 +103,12 @@ export function AddRecord() {
         setOpen(false);
 
         // refresh the table after successful addition of new record
-        mutate("/api/internal-api-handler-get-all-records");
+        mutate("/api/records/get-all");
 
         toast({
           title: "Success!",
           description: `New record has been added.`,
+          duration: 2000,
         });
       }
     } catch (error) {

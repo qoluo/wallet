@@ -3,18 +3,14 @@
 import useSWR from "swr";
 import { columns } from "@/components/records-components/columns";
 import { RecordsDataTable } from "@/components/records-components/data-table";
-import { getAllRecordsfromDB } from "@/utils/records/get-all-records";
+import { fetchUtil } from "@/utils/swr-fetch";
 import { Progress } from "@/components/ui/progress";
 import { useEffect, useState } from "react";
 
 export function RecordsTable() {
   const [randomProgressBarNumber, setRandom] = useState(0);
 
-  const { data, error, isLoading } = useSWR(
-    "/api/internal-api-handler-get-all-records",
-    getAllRecordsfromDB
-  );
-
+  const { data, error, isLoading } = useSWR("/api/records/get-all", fetchUtil);
   useEffect(() => {
     setRandom(Math.floor(Math.random() * 100));
   }, []);

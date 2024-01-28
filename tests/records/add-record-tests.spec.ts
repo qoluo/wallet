@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 test("can add a new record", async ({ page }) => {
-  await page.route("/api/internal-api-handler-add-record", async (route) => {
+  await page.route("/api/records/add-one", async (route) => {
     route.fulfill({
       status: 201,
     });
@@ -31,9 +31,12 @@ test("can add a new record", async ({ page }) => {
   expect(await page.isVisible('text="New record has been added."')).toBe(true);
 });
 
-test("new record can not be added if external api is down", async ({
-  page,
-}) => {
+test("new record can not be added if api is not working", async ({ page }) => {
+  await page.route("/api/records/add-one", async (route) => {
+    route.fulfill({
+      status: 500,
+    });
+  });
   await page.goto("http://localhost:3000/records");
 
   await page.click('text="Add Record"');
@@ -157,14 +160,11 @@ test("amount field with negative value should return error from zod", async ({
 test("amount field with float value higher than 0 create a record", async ({
   page,
 }) => {
-  await page.route(
-    "http://localhost:3000/api/internal-api-handler-add-record",
-    async (route) => {
-      route.fulfill({
-        status: 201,
-      });
-    }
-  );
+  await page.route("/api/records/add-one", async (route) => {
+    route.fulfill({
+      status: 201,
+    });
+  });
 
   await page.goto("http://localhost:3000/records");
 
