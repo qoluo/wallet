@@ -27,7 +27,7 @@ test("should have Add Record button", async ({ page }) => {
 
 test("should have a records table component", async ({ page }) => {
   await page.route(
-    "/api/internal-api-handler-get-all-records",
+    "/api/records/get-all",
     async (route) => {
       const dataToReturn = [
         {
